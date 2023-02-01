@@ -1,0 +1,132 @@
+
+
+	Archtecture description
+	
+	* * *
+
+	1. Required functionality:
+	
+	Tetris application should have several screens:
+	- START_SCREEN
+	- CUSTOM_SCREEN
+	- GAME_SCREEN
+	- HELP_SCREEN
+	- PAUSE_SCREEN
+	- GAME_OVER
+	- SMALL_SCREEN
+	User can switch between this sceens. GAME_SCREEN is for tetris game as
+	we used to see it, other screens - auxuliary, for help, game settings
+	and so on.
+	
+	* * *
+	
+	2. Screens description:
+	
+	START_SCREEN
+	After aplictaion start start screen will be show (or may be SMALL_SCREEN).
+	This screen has list of options, and user can choose one of them:
+	- start (leads to GAME_SCREEN and starts game with default settings)
+	- custom (leads to CUSTOM_SCREEN)
+	- help (leads to HELP_SCREEN)
+	- quit (closes the application)
+	
+	CUSTOM_SCREEN
+	Custom screen provides next options:
+	- start custom game
+	  (leads to GAME_SCREEN and starts game with custom settings)
+	- speed (speed of game)
+	- width (of game rectangle)
+	- height (of game rectangle)
+	- back (leads to START_SCREEN)
+	User can change values of speed, width and height.
+	All game settings must be persistance during of runtime of application.
+	
+	GAME_SCREEN
+	Game screen looks like usual tetris game. It has:
+	- game rectangle in the center
+	- information on screen:
+		- current speed
+		- lines (number of full lines)
+		- score
+		- timer (shows time of game)
+		- next figure
+	There are several ways out from game:
+	- press P or ESC (leads to PAUSE_SCREEN)
+	- finish the game (leads to GAMEOVER_SCREEN)
+
+	PAUSE_SCREEN
+	Pause screen has the same structure as START_SCREEN. It has next options:
+	- resume game (leads to GAME_SCREEN)
+	- abandon game (leads to START_SCREEN)
+	
+	GAME_OVER
+	If player lost the game this screen will be shown. It has no options,
+	only information. Information of th screen: total lines, score, final
+	speed. User can leave this screen by pressing ENTER of ESC.
+	
+	HELP_SCREEN
+	User can get here from any screen by pressing F1. This screen with text:
+	rules of the game, controls and so on. This text must be scrollable.
+	User can leave this screen by prssing ESC or ENTER. In any case it leads
+	to previous screen.
+	
+	SMALL_SCREEN
+	If user resized screen, or started application in terminal with small
+	sizes, we show this
+	screen. This screen contains only warning: "SCREEN TOO SMALL!"
+	User can leave this screen only by resizing window and as result he will
+	return back to previous screen. If user resized window during the game
+	and went to SMALL_SCREEN - game must be paused.
+	
+	All screens must be resizable. It means if user change size of the window
+	- screen must be updated.
+	
+	* * *
+	
+	Implementation details:
+
+	Application contains for basic elements:
+	- Model
+	- View
+	- Event Loop
+	- Controller
+	
+	General description of basic elements:
+	- View is responsible only for depiction of certain game state. It
+	connected with Model only and executes what Model want. View can show any
+	screen with specified data and that's all what it can.
+	- Model implements all main logic of application: screen switch and
+	tetris game by itself. Also all data in application stored only in Model.
+	- Controller recieves events from keyboard, filter them and put in
+	event loop.
+	
+	Model and View work in main thread.
+	Controller work in his own thread.
+	Also Model sometimes need to put deffered events in event loop. It spawns
+	auxiliary threads for that.
+	
+	For every screen we have two classes:
+	- model class: it stores state of the screen and incapsulates all logic
+	(how to process all kind of events).
+	- view class: it knows only how to depict certain state of this screen.
+
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
