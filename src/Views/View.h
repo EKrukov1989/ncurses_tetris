@@ -1,13 +1,18 @@
 #pragma once
 #include "Enums.h"
 #include "StartScreenView.h"
+#include "PauseScreenView.h"
+#include "CustomScreenView.h"
 
 namespace Tetris
 {
 
 class View
 {
+    friend class OptionScreenView;
     friend class StartScreenView;
+    friend class PauseScreenView;
+    friend class CustomScreenView;
 
     enum class InterfaceColor
     {
@@ -33,6 +38,13 @@ public:
     ~View();
 
     void show_start_screen(StartScreenView::Option);
+    void show_pause_screen(PauseScreenView::Option);
+    void show_custom_screen(CustomScreenView::Option, CustomScreenView::Settings);
+    // 	GAME_SCREEN,
+    // 	HELP_SCREEN,
+    // 	GAME_OVER,	
+    //  SMALL_SCREEN
+
 };
 
 }  // namespace Tetris

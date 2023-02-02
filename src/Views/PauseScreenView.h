@@ -5,16 +5,14 @@ namespace Tetris
 {
 class View;
 
-class StartScreenView : private OptionScreenView
+class PauseScreenView : private OptionScreenView
 {
     friend class View;
 public:
     enum class Option
     {
-        START,
-        CUSTOM,
-        HELP,
-        QUIT
+        RESUME,
+        ABANDON
     };
 private:
     static void show(Option option);

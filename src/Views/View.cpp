@@ -30,7 +30,17 @@ View::~View()
 
 void View::show_start_screen(StartScreenView::Option option)
 {
-    StartScreenView::show_with_option(option);
+    StartScreenView::show(option);
+}
+
+void View::show_pause_screen(PauseScreenView::Option option)
+{
+    PauseScreenView::show(option);
+}
+
+void View::show_custom_screen(CustomScreenView::Option option, CustomScreenView::Settings settings)
+{
+    CustomScreenView::show(option, settings);
 }
 
 }  // namespace Tetris
