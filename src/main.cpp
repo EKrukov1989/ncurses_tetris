@@ -1,19 +1,13 @@
 #include <ncurses.h>
+#include "Views/View.h"
 
 int main()
 {
-    initscr();
-    curs_set(0);
-    if (start_color() != OK)
+    Tetris::View v;
+    if (!v.init())
         return 1;
-
-    init_pair(1, COLOR_BLACK, COLOR_GREEN);
-    attrset(COLOR_PAIR(1));
-    move(3,6);
-    addstr("hello, ncurses!");
-    refresh();
+    v.show_start_screen(Tetris::StartScreenView::Option::CUSTOM);
     getch();
 
-    endwin();
     return 0;
 }
