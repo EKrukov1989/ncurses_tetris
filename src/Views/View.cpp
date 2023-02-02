@@ -1,6 +1,7 @@
 #include "View.h"
 #include "StartScreenView.h"
 #include <ncurses.h>
+#include "SmallScreenView.h"
 
 namespace Tetris
 {
@@ -28,19 +29,29 @@ View::~View()
     endwin();
 }
 
-void View::show_start_screen(StartScreenView::Option option)
+void View::show_start_screen(StartScreenView::Option option) const
 {
     StartScreenView::show(option);
 }
 
-void View::show_pause_screen(PauseScreenView::Option option)
+void View::show_pause_screen(PauseScreenView::Option option) const
 {
     PauseScreenView::show(option);
 }
 
-void View::show_custom_screen(CustomScreenView::Option option, CustomScreenView::Settings settings)
+void View::show_custom_screen(CustomScreenView::Option option, CustomScreenView::Settings settings) const
 {
     CustomScreenView::show(option, settings);
+}
+
+void View::show_gameover_screen(GameoverScreenView::Scores scores) const
+{
+    GameoverScreenView::show(scores);
+}
+
+void View::show_small_screen() const
+{
+    SmallScreenView::show();
 }
 
 }  // namespace Tetris

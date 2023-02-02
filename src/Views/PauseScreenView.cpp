@@ -5,7 +5,7 @@
 namespace
 {
 
-// Content and order of strings in next array must correspond with enum!
+// Content and order of strings in next array must correspond with enum in the header!
 const std::vector<std::string> opts = { " resume  ",
                                         " abandon " };
 

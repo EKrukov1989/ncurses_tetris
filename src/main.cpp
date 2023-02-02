@@ -10,19 +10,24 @@ int main()
     if (!v.init())
         return 1;
 
-    v.show_start_screen(Tetris::StartScreenView::Option::CUSTOM);
+    auto ti = std::chrono::milliseconds(1500);
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    v.show_start_screen(Tetris::StartScreenView::Option::CUSTOM);
+    std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
     v.show_pause_screen(Tetris::PauseScreenView::Option::RESUME);
+    std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1500));
+    Tetris::CustomScreenView::Settings settings = {3,25,12};
+    v.show_custom_screen(Tetris::CustomScreenView::Option::SPEED, settings);
+    std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
-    Tetris::CustomScreenView::Settings s;
-    s.speed = 3;
-    s.height = 25;
-    s.width = 12;
-    v.show_custom_screen(Tetris::CustomScreenView::Option::SPEED, s);
+    Tetris::GameoverScreenView::Scores scores = {3,25,12};
+    v.show_gameover_screen(scores);
+    std::this_thread::sleep_for(std::chrono::milliseconds(ti));
+
+    v.show_small_screen();
+
 
     getch();
     return 0;
