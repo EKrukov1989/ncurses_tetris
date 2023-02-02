@@ -1,5 +1,5 @@
 #pragma once
-#include "../Enums.h"
+#include "Enums.h"
 #include "StartScreenView.h"
 
 namespace Tetris

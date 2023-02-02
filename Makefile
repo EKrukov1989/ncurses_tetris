@@ -1,13 +1,18 @@
 bdir=build
 sdir=src
 
-tetris : ${sdir}/main.cpp ${sdir}/Enums.h ${sdir}/Views/View.cpp ${sdir}/Views/View.h ${sdir}/Views/StartScreenView.cpp ${sdir}/Views/StartScreenView.h 
-	g++ -O2 -g -std=c++17 ${sdir}/main.cpp ${sdir}/Views/View.cpp ${sdir}/Views/StartScreenView.cpp -pthread -lncurses -o ${bdir}/tetris
+header_files  = ${sdir}/Enums.h \
+				${sdir}/Views/View.h \
+				${sdir}/Views/StartScreenView.h
+
+source_files  = ${sdir}/main.cpp \
+				${sdir}/Views/View.cpp \
+				${sdir}/Views/StartScreenView.cpp
+
+tetris : $(source_files) $(header_files)
+	g++ -O2 -g -std=c++17 $(source_files) -pthread -lncurses -I "src" -o ${bdir}/tetris
 
 clean :
 	rm -r $(bdir)
 
 $(info $(shell mkdir -p $(bdir)))
-
-# TODO: includepath to src
-# TODO: put all header and source file in variables
