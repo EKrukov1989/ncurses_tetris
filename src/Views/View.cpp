@@ -2,6 +2,7 @@
 #include "StartScreenView.h"
 #include <ncurses.h>
 #include "SmallScreenView.h"
+#include "HelpScreenView.h"
 
 namespace Tetris
 {
@@ -52,6 +53,12 @@ void View::show_gameover_screen(GameoverScreenView::Scores scores) const
 void View::show_small_screen() const
 {
     SmallScreenView::show();
+}
+
+unsigned View::show_help_screen( unsigned line_index) const
+{
+    static HelpScreenView hsv;
+    return hsv.show( line_index );
 }
 
 }  // namespace Tetris

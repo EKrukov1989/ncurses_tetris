@@ -3,14 +3,13 @@
 #include <chrono>
 #include "Views/View.h"
 
-
 int main()
 {
     Tetris::View v;
     if (!v.init())
         return 1;
 
-    auto ti = std::chrono::milliseconds(1500);
+    auto ti = std::chrono::milliseconds(1000);
 
     v.show_start_screen(Tetris::StartScreenView::Option::CUSTOM);
     std::this_thread::sleep_for(std::chrono::milliseconds(ti));
@@ -27,6 +26,9 @@ int main()
     std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
     v.show_small_screen();
+    std::this_thread::sleep_for(std::chrono::milliseconds(ti));
+
+    v.show_help_screen( 15 );
 
 
     getch();
