@@ -22,6 +22,13 @@ bool View::init()
     init_pair(int(InterfaceColor::DIALOG_SCREEN), COLOR_WHITE, COLOR_BLUE);
     init_pair(int(InterfaceColor::DIALOG_SCREEN_CHOSEN), COLOR_BLACK, COLOR_WHITE);
 
+    init_pair(int(TetrisColor::BACKGROUND), COLOR_BLACK, COLOR_BLACK);
+    init_pair(int(TetrisColor::FULL_LINE),  COLOR_BLACK, COLOR_WHITE);
+    init_pair(int(TetrisColor::FIGURE_1),   COLOR_BLACK, COLOR_RED);
+    init_pair(int(TetrisColor::FIGURE_2),   COLOR_BLACK, COLOR_YELLOW);
+    init_pair(int(TetrisColor::FIGURE_3),   COLOR_BLACK, COLOR_GREEN);
+    init_pair(int(TetrisColor::FIGURE_4),   COLOR_BLACK, COLOR_MAGENTA);
+
     return true;
 }
 
@@ -59,6 +66,11 @@ unsigned View::show_help_screen( unsigned line_index) const
 {
     static HelpScreenView hsv;
     return hsv.show( line_index );
+}
+
+void View::show_game_screen(const GameScreenView::State& s) const
+{
+    GameScreenView::show(s);
 }
 
 }  // namespace Tetris

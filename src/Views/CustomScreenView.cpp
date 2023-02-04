@@ -1,5 +1,4 @@
 #include "CustomScreenView.h"
-#include "View.h"
 #include <ncurses.h>
 
 namespace

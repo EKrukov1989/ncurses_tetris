@@ -2,7 +2,7 @@
 #include <ncurses.h>
 #include <cmath>
 #include <algorithm>
-#include "View.h"
+#include "Colors.h"
 
 namespace
 {
@@ -160,9 +160,9 @@ std::size_t HelpScreenView::show( std::size_t line_index )
     auto n = prepared_text_.size();
     std::size_t max_line_idx = n - LINES;
 
-    bkgd(COLOR_PAIR( int(View::InterfaceColor::DIALOG_SCREEN) ));
+    bkgd(COLOR_PAIR( int(InterfaceColor::DIALOG_SCREEN) ));
     clear();
-    attrset( COLOR_PAIR( int(View::InterfaceColor::DIALOG_SCREEN)) );
+    attrset( COLOR_PAIR( int(InterfaceColor::DIALOG_SCREEN)) );
 
     // left inscription
 
@@ -212,7 +212,7 @@ std::size_t HelpScreenView::show( std::size_t line_index )
             scroll_top = std::clamp( scroll_top, std::size_t(1), std::size_t(LINES - scroll_h - 1));
         }
 
-        attrset( COLOR_PAIR( int(View::InterfaceColor::DIALOG_SCREEN_CHOSEN)) );
+        attrset( COLOR_PAIR( int(InterfaceColor::DIALOG_SCREEN_CHOSEN)) );
         for (int i = 0; i < scroll_h; ++i)
         {
             move(scroll_top + i, scroll_x);

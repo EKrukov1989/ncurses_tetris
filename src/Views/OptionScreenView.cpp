@@ -1,5 +1,5 @@
 #include "OptionScreenView.h"
-#include "View.h"
+#include "Colors.h"
 #include <ncurses.h>
 
 namespace Tetris
@@ -7,7 +7,7 @@ namespace Tetris
 
 void OptionScreenView::show(const std::vector<std::string>& options, int chosen_option)
 {
-    bkgd(COLOR_PAIR( int(View::InterfaceColor::DIALOG_SCREEN) ));
+    bkgd(COLOR_PAIR( int(InterfaceColor::DIALOG_SCREEN) ));
     clear();
 
     auto h = options.size();
@@ -17,8 +17,8 @@ void OptionScreenView::show(const std::vector<std::string>& options, int chosen_
 
     for (int i = 0; i < options.size(); ++i)
     {
-        attrset(COLOR_PAIR( i != chosen_option ? int(View::InterfaceColor::DIALOG_SCREEN)
-                                               : int(View::InterfaceColor::DIALOG_SCREEN_CHOSEN) ));
+        attrset(COLOR_PAIR( i != chosen_option ? int(InterfaceColor::DIALOG_SCREEN)
+                                               : int(InterfaceColor::DIALOG_SCREEN_CHOSEN) ));
         move(y + i, x);
         addstr(options[i].data());
     }

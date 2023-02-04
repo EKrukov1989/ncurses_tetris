@@ -2,6 +2,7 @@ bdir=build
 sdir=src
 
 header_files  = ${sdir}/Enums.h \
+				${sdir}/Views/Colors.h \
 				${sdir}/Views/View.h \
 				${sdir}/Views/OptionScreenView.h \
 				${sdir}/Views/StartScreenView.h \
@@ -9,7 +10,7 @@ header_files  = ${sdir}/Enums.h \
 				${sdir}/Views/CustomScreenView.h \
 				${sdir}/Views/GameoverScreenView.h \
 				${sdir}/Views/SmallScreenView.h \
-				${sdir}/Views/HelpScreenView.h \
+				${sdir}/Views/GameScreenView.h \
 
 source_files  = ${sdir}/main.cpp \
 				${sdir}/Views/View.cpp \
@@ -20,6 +21,7 @@ source_files  = ${sdir}/main.cpp \
 				${sdir}/Views/GameoverScreenView.cpp \
 				${sdir}/Views/SmallScreenView.cpp \
 				${sdir}/Views/HelpScreenView.cpp \
+				${sdir}/Views/GameScreenView.cpp \
 
 tetris : $(source_files) $(header_files)
 	g++ -O2 -g -std=c++17 $(source_files) -pthread -lncurses -I "src" -o ${bdir}/tetris
