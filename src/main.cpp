@@ -3,6 +3,7 @@
 #include <chrono>
 #include <stdlib.h>
 #include "Views/View.h"
+#include "Application.h"
 #include "Views/Colors.h"
 
 std::vector<std::vector<Tetris::TetrisColor>> make_rand_rect(int w, int h)
@@ -28,7 +29,7 @@ std::vector<std::vector<Tetris::TetrisColor>> make_rand_rect(int w, int h)
 Tetris::GameScreenView::State make_game_state()
 {
     Tetris::GameScreenView::State gs;
-    gs.game_rect = make_rand_rect(8,15);
+    gs.game_rect = make_rand_rect(10,18);
     gs.next_tetr = make_rand_rect(4,4);
     gs.lines = 3;
     gs.speed = 10;
@@ -37,11 +38,11 @@ Tetris::GameScreenView::State make_game_state()
     return gs;
 }
 
-int main()
+void view_test()
 {
     Tetris::View v;
     if (!v.init())
-        return 1;
+        return;
 
     auto ti = std::chrono::milliseconds(500);
 
@@ -69,5 +70,11 @@ int main()
     v.show_game_screen(gs);
 
     getch();
+}
+
+int main()
+{
+    Tetris::Application app;
+    app.run();
     return 0;
 }

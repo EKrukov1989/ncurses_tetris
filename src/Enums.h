@@ -14,4 +14,21 @@ enum class Screen
     SMALL_SCREEN
 };
 
+enum class Event
+{
+	INVALID = 0,
+    START,
+	STOP,
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+	LEAVE,
+	ROTATE,
+	CONFIRM,
+	HELP,
+	LAST
+};
+
+
 }  // namespace Tetris
