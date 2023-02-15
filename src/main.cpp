@@ -1,10 +1,17 @@
+#include "Application.h"
+
+// includes for tests
 #include <ncurses.h>
 #include <thread>
 #include <chrono>
 #include <stdlib.h>
 #include "Views/View.h"
-#include "Application.h"
 #include "Views/Colors.h"
+#include "Controller.h"
+#include "EventQueue.h"
+#include "Enums.h"
+#include <iostream>
+#include <string>
 
 std::vector<std::vector<Tetris::TetrisColor>> make_rand_rect(int w, int h)
 {
@@ -70,6 +77,44 @@ void view_test()
     v.show_game_screen(gs);
 
     getch();
+}
+
+void controller_test()
+{
+    std::vector<std::string> vv =
+    {
+        "INVALID",
+        "START",
+        "STOP",
+        "LEFT",
+        "RIGHT",
+        "UP",
+        "DOWN",
+        "LEAVE",
+        "ROTATE",
+        "CONFIRM",
+        "PAUSE",
+        "HELP",
+        "RESIZE",
+        "LAST"
+    };
+
+    initscr();
+    Tetris::EventQueue q;
+    Tetris::Controller c(q);
+
+    auto t0 = std::chrono::high_resolution_clock::now();
+    c.start();
+    std::cout << "start" << std::endl;
+    for (int i = 0; i < 10; ++i)
+    {
+        auto ev_info = q.wait_and_get_event();
+        auto td = ev_info.time - t0;
+        auto td_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(td).count();
+        std::cout << int(ev_info.event) << " " << vv[int(ev_info.event)] << " " << td_ns << std::endl;
+    }
+    std::cout << "finish" << std::endl;
+    endwin();
 }
 
 int main()

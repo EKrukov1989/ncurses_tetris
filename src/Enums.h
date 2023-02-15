@@ -26,7 +26,9 @@ enum class Event
 	LEAVE,
 	ROTATE,
 	CONFIRM,
+	PAUSE,
 	HELP,
+	RESIZE,
 	LAST
 };
 

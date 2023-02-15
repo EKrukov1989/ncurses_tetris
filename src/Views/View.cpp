@@ -13,7 +13,6 @@ View::View()
 
 bool View::init()
 {
-    initscr();
     curs_set(0);
 
     if (start_color() != OK)
@@ -34,7 +33,6 @@ bool View::init()
 
 View::~View()
 {
-    endwin();
 }
 
 void View::show_start_screen(StartScreenView::Option option) const

@@ -5,12 +5,14 @@
 #include "EventQueue.h"
 #include "Enums.h"
 #include <chrono>
+#include <ncurses.h>
 
 namespace Tetris
 {
 
 Application::Application()
 {
+    initscr();
     auto queue_ = std::make_unique<EventQueue>();
     auto controller_ = std::make_unique<Controller>(*queue_);
     auto view_ = std::make_unique<View>();
@@ -19,6 +21,7 @@ Application::Application()
 
 Application::~Application()
 {
+    endwin();
 }
 
 void Application::run()
