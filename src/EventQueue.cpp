@@ -1,6 +1,5 @@
 #include "EventQueue.h"
 #include "Enums.h"
-// #include <thread>
 
 namespace Tetris
 {
@@ -18,7 +17,7 @@ void EventQueue::push_event(Event e)
     cv_.notify_all();
 }
 
-EventQueue::EventInfo EventQueue::wait_and_get_event()
+EventInfo EventQueue::wait_and_get_event()
 {
     std::unique_lock<std::mutex> ulk(m_);
     cv_.wait(ulk, [this]{ return !q_.empty(); } );

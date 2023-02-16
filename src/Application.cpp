@@ -26,7 +26,8 @@ Application::~Application()
 
 void Application::run()
 {
-    queue_->push_event(Event::START);
+    model_->start();
+
     controller_->start();
 
     while(true)

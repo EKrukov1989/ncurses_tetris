@@ -35,40 +35,47 @@ View::~View()
 {
 }
 
-void View::show_start_screen(StartScreenView::Option option) const
+bool View::show_start_screen(StartScreenOption option) const
 {
     StartScreenView::show(option);
+    return true;  // todo
 }
 
-void View::show_pause_screen(PauseScreenView::Option option) const
+bool View::show_pause_screen(PauseScreenView::Option option) const
 {
     PauseScreenView::show(option);
+    return true;  // todo
 }
 
-void View::show_custom_screen(CustomScreenView::Option option, CustomScreenView::Settings settings) const
+bool View::show_custom_screen(CustomScreenView::Option option, CustomScreenView::Settings settings) const
 {
     CustomScreenView::show(option, settings);
+    return true;  // todo
 }
 
-void View::show_gameover_screen(GameoverScreenView::Scores scores) const
+bool View::show_gameover_screen(GameoverScreenView::Scores scores) const
 {
     GameoverScreenView::show(scores);
+    return true;  // todo
 }
 
-void View::show_small_screen() const
+bool View::show_small_screen() const
 {
     SmallScreenView::show();
+    return true;  // todo
 }
 
-unsigned View::show_help_screen( unsigned line_index) const
+bool View::show_help_screen(std::size_t line_index, std::size_t& max_pos) const
 {
     static HelpScreenView hsv;
-    return hsv.show( line_index );
+    hsv.show( line_index, max_pos );
+    return true;  // todo
 }
 
-void View::show_game_screen(const GameScreenView::State& s) const
+bool View::show_game_screen(const GameScreenView::State& s) const
 {
     GameScreenView::show(s);
+    return true;  // todo
 }
 
 }  // namespace Tetris

@@ -15,6 +15,8 @@ header_files  = ${sdir}/Application.h \
 				${sdir}/Views/SmallScreenView.h \
 				${sdir}/Views/GameScreenView.h \
 				${sdir}/Models/Model.h \
+				${sdir}/Models/IScreenModel.h \
+				${sdir}/Models/StartScreenModel.h \
 
 source_files  = ${sdir}/main.cpp \
 				${sdir}/Application.cpp \
@@ -30,6 +32,7 @@ source_files  = ${sdir}/main.cpp \
 				${sdir}/Views/HelpScreenView.cpp \
 				${sdir}/Views/GameScreenView.cpp \
 				${sdir}/Models/Model.cpp \
+				${sdir}/Models/StartScreenModel.cpp \
 
 tetris : $(source_files) $(header_files)
 	g++ -O2 -g -std=c++17 $(source_files) -pthread -lncurses -I "src" -o ${bdir}/tetris

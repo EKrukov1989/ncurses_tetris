@@ -1,5 +1,6 @@
 #pragma once
 #include "OptionScreenView.h"
+#include "Enums.h"
 
 namespace Tetris
 {
@@ -8,16 +9,8 @@ class View;
 class StartScreenView : private OptionScreenView
 {
     friend class View;
-public:
-    enum class Option
-    {
-        START,
-        CUSTOM,
-        HELP,
-        QUIT
-    };
 private:
-    static void show(Option option);
+    static void show(StartScreenOption option);
 };
 
 }  // namespace Tetris

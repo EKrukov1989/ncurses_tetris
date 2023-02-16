@@ -16,7 +16,7 @@ const std::vector<std::string> opts = { " start  ",
 namespace Tetris
 {
 
-void StartScreenView::show(Option option)
+void StartScreenView::show(StartScreenOption option)
 {
     OptionScreenView::show(opts, int(option));
 }

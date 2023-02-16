@@ -1,8 +1,8 @@
 #pragma once
-#include <chrono>
 #include <condition_variable>
 #include <mutex>
 #include <queue>
+#include "EventInfo.h"
 
 namespace Tetris
 {
@@ -11,12 +11,6 @@ enum class Event;
 class EventQueue
 {
 public:
-    struct EventInfo
-    {
-        Event event;
-        std::chrono::_V2::system_clock::time_point time;
-    };
-
     EventQueue();
 
     void push_event(Event);

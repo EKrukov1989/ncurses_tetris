@@ -53,7 +53,7 @@ void view_test()
 
     auto ti = std::chrono::milliseconds(500);
 
-    v.show_start_screen(Tetris::StartScreenView::Option::CUSTOM);
+    v.show_start_screen(Tetris::StartScreenOption::CUSTOM);
     std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
     v.show_pause_screen(Tetris::PauseScreenView::Option::RESUME);
@@ -70,7 +70,8 @@ void view_test()
     v.show_small_screen();
     std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
-    v.show_help_screen( 10 );
+    std::size_t out = 0;
+    v.show_help_screen( 10, out );
     std::this_thread::sleep_for(std::chrono::milliseconds(ti));
 
     auto gs = make_game_state();

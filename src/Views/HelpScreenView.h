@@ -16,7 +16,10 @@ private:
     std::vector<std::string> prepared_text_;
     std::size_t prepared_text_width_ = 1;
 
-    std::size_t show(std::size_t line_index);
+    // next function shows some help-text that hardcoded inside view.
+    // "line_index" - defines the part of the text, that will be shown on the screen.
+    // max_pos - maximal possible line index.
+    void show(std::size_t line_index, std::size_t& max_pos);
 
     void prepare_text_();
 };
