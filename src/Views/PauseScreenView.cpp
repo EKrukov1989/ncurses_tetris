@@ -14,9 +14,9 @@ const std::vector<std::string> opts = { " resume  ",
 namespace Tetris
 {
 
-void PauseScreenView::show(Option option)
+bool PauseScreenView::show(Option option)
 {
-    OptionScreenView::show(opts, int(option));
+    return OptionScreenView::show(opts, int(option));
 }
 
 }  // namespace Tetris

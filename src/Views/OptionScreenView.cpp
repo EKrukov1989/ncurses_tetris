@@ -5,13 +5,17 @@
 namespace Tetris
 {
 
-void OptionScreenView::show(const std::vector<std::string>& options, int chosen_option)
+bool OptionScreenView::show(const std::vector<std::string>& options, int chosen_option)
 {
+    auto h = options.size();
+    auto w = options.front().length();  // we suppose that all options have the same length
+
+    if ( h > LINES || w > COLS )
+        return false;
+
     bkgd(COLOR_PAIR( int(InterfaceColor::DIALOG_SCREEN) ));
     clear();
 
-    auto h = options.size();
-    auto w = options.front().length();
     int y = (LINES - h) / 2;
     int x = (COLS - w) / 2;
 
@@ -23,6 +27,8 @@ void OptionScreenView::show(const std::vector<std::string>& options, int chosen_
         addstr(options[i].data());
     }
     refresh();
+
+    return true;
 }
 
 }  // namespace Tetris

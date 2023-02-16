@@ -15,7 +15,7 @@ public:
         ABANDON
     };
 private:
-    static void show(Option option);
+    static bool show(Option option);
 };
 
 }  // namespace Tetris

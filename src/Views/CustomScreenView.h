@@ -25,7 +25,7 @@ public:
         BACK
     };
 private:
-    static void show(Option, Settings);
+    static bool show(Option, Settings);
 };
 
 }  // namespace Tetris

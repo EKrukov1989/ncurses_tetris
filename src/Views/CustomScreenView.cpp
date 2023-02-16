@@ -34,11 +34,11 @@ void s_insert_settings_in_template(std::vector<std::string>& opts,
 namespace Tetris
 {
 
-void CustomScreenView::show(Option option, Settings settings)
+bool CustomScreenView::show(Option option, Settings settings)
 {
     std::vector<std::string> opts_copy = opts;
     s_insert_settings_in_template(opts_copy, settings);
-    OptionScreenView::show(opts_copy, int(option));
+    return OptionScreenView::show(opts_copy, int(option));
 }
 
 }  // namespace Tetris

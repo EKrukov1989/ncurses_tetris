@@ -19,7 +19,7 @@ private:
     // next function shows some help-text that hardcoded inside view.
     // "line_index" - defines the part of the text, that will be shown on the screen.
     // max_pos - maximal possible line index.
-    void show(std::size_t line_index, std::size_t& max_pos);
+    bool show(std::size_t line_index, std::size_t& max_pos);
 
     void prepare_text_();
 };

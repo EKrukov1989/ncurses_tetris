@@ -154,8 +154,11 @@ void HelpScreenView::prepare_text_()
     prepared_text_width_ = new_text_width;
 }
 
-void HelpScreenView::show( std::size_t line_index, std::size_t& max_pos )
+bool HelpScreenView::show( std::size_t line_index, std::size_t& max_pos )
 {
+    if (LINES < c_min_lines || COLS < c_min_cols)
+        return false;
+
     prepare_text_();
     auto n = prepared_text_.size();
     std::size_t max_line_idx = n - LINES;
@@ -222,6 +225,7 @@ void HelpScreenView::show( std::size_t line_index, std::size_t& max_pos )
 
     refresh();
     max_pos = max_line_idx;
+    return true;
 }
 
 }  // namespace Tetris

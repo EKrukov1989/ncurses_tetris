@@ -18,7 +18,7 @@ public:
     };
 
 private:
-    static void show(Scores);
+    static bool show(Scores);
 };
 
 }  // namespace Tetris

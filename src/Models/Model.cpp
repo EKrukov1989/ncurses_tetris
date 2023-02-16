@@ -38,7 +38,7 @@ bool Model::update_view_()
     {
         case Screen::START_SCREEN:
             const auto& ref = *screen_models_[current_screen_];
-            auto opt = dynamic_cast<const StartScreenModel&>(ref).get_state();
+            auto opt = static_cast<const StartScreenModel&>(ref).get_state();
             return view_.show_start_screen(opt);
     }
     return true;  // normally never

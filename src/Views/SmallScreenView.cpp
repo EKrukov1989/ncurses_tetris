@@ -12,9 +12,10 @@ const std::vector<std::string> text = { "WINDOW TOO SMALL" };
 namespace Tetris
 {
 
-void SmallScreenView::show()
+bool SmallScreenView::show()
 {
     OptionScreenView::show(text);
+    return true;  // anyway
 }
 
 }  // namespace Tetris

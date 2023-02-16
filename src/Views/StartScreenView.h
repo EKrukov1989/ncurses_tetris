@@ -10,7 +10,7 @@ class StartScreenView : private OptionScreenView
 {
     friend class View;
 private:
-    static void show(StartScreenOption option);
+    static bool show(StartScreenOption option);
 };
 
 }  // namespace Tetris

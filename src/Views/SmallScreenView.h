@@ -9,7 +9,7 @@ class SmallScreenView : private OptionScreenView
 {
     friend class View;
 private:
-    static void show();
+    static bool show();
 };
 
 }  // namespace Tetris
