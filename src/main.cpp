@@ -120,7 +120,14 @@ void controller_test()
 
 int main()
 {
-    Tetris::Application app;
-    app.run();
+    auto err = Tetris::ApplicationError::FINISHED_SUCCESSFULLY;
+    {
+        Tetris::Application app;
+        err = app.run();
+    }
+
+    if (err == Tetris::ApplicationError::NOCOLORS)
+        std::cout << "ERROR: Console doesn't support colors."<< std::endl;
+
     return 0;
 }

@@ -41,5 +41,11 @@ enum class Event
 	LAST
 };
 
+enum class ApplicationError
+{
+	FINISHED_SUCCESSFULLY = 0,
+	NOCOLORS
+};
+
 
 }  // namespace Tetris

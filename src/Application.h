@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include "Enums.h"
 
 namespace Tetris
 {
@@ -18,7 +19,7 @@ class Application
 public:
     Application();
     ~Application();
-    void run();
+    ApplicationError run();
 };
 
 } // namespace Tetris
